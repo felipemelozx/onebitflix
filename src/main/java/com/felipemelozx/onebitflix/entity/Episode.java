@@ -42,7 +42,7 @@ public class Episode {
       nullable = false)
   private Date updateAt;
 
-  public Class(Long id, String title, String synopsis, Integer order, String videoUrl, Integer secondsLong, Integer courseId, Date createdAt, Date updateAt) {
+  public Episode(Long id, String title, String synopsis, Integer order, String videoUrl, Integer secondsLong, Integer courseId, Date createdAt, Date updateAt) {
     this.id = id;
     this.title = title;
     this.synopsis = synopsis;
@@ -54,7 +54,7 @@ public class Episode {
     this.updateAt = updateAt;
   }
 
-  public Class() {
+  public Episode() {
   }
 
   public Long getId() {
