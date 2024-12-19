@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Class {
+public class Episode {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Long id;
