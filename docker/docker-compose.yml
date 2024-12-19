@@ -1,0 +1,13 @@
+services:
+  onebitflix:
+    image:
+      postgres:latest
+    ports:
+      - "5432:5432"
+    expose:
+      - 5432
+    restart: always
+    environment:
+      POSTGRES_DB: onebitflix
+      POSTGRES_USER: onebitflix
+      POSTGRES_PASSWORD: onebitflix
