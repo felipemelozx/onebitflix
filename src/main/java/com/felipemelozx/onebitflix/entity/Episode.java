@@ -16,7 +16,9 @@ public class Episode {
   @Column(nullable = false)
   private String synopsis;
 
-  @Column(nullable = false)
+  @Column(
+      nullable = false,
+      name = "episode_order")
   private Integer order;
 
   @Column(
