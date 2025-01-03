@@ -1,12 +1,9 @@
 package com.felipemelozx.onebitflix.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -31,6 +28,9 @@ public class Course {
       name = "category_id")
   private Integer categoryId;
 
+  @OneToMany(mappedBy = "course")
+  private List<Episode> episodeList;
+
   @Column(
       name = "created_at",
       nullable = false)
@@ -41,13 +41,14 @@ public class Course {
       nullable = false)
   private Date updateAt;
 
-  public Course(Integer id, String name, String synopsis, String thumbnailUrl, Boolean featured, Integer categoryId, Date createdAt, Date updateAt) {
+  public Course(Integer id, String name, String synopsis, String thumbnailUrl, Boolean featured, Integer categoryId, Date createdAt, Date updateAt,List<Episode> episodeList ) {
     this.id = id;
     this.name = name;
     this.synopsis = synopsis;
     this.thumbnailUrl = thumbnailUrl;
     this.featured = featured;
     this.categoryId = categoryId;
+    this.episodeList = episodeList;
     this.createdAt = createdAt;
     this.updateAt = updateAt;
   }
@@ -95,12 +96,20 @@ public class Course {
     this.featured = featured;
   }
 
-  public Integer getCategoryID() {
+  public Integer getCategoryId() {
     return categoryId;
   }
 
-  public void setCategoryID(Integer categoryID) {
+  public void setCategoryId(Integer categoryID) {
     this.categoryId = categoryID;
+  }
+
+  public List<Episode> getEpisodeList() {
+    return episodeList;
+  }
+
+  public void setEpisodeList(List<Episode> episodeList) {
+    this.episodeList = episodeList;
   }
 
   public Date getCreatedAt() {
@@ -118,4 +127,5 @@ public class Course {
   public void setUpdateAt(Date updateAt) {
     this.updateAt = updateAt;
   }
+
 }

@@ -29,10 +29,10 @@ public class Episode {
       nullable = false,
       name = "seconds_long")
   private Integer secondsLong;
-  @Column(
-      nullable = false,
-      name = "course_id")
-  private Integer courseId;
+
+  @ManyToOne
+  @JoinColumn(name = "course_id")
+  private Course course;
 
   @Column(
       name = "created_at",
@@ -44,14 +44,14 @@ public class Episode {
       nullable = false)
   private Date updateAt;
 
-  public Episode(Long id, String title, String synopsis, Integer order, String videoUrl, Integer secondsLong, Integer courseId, Date createdAt, Date updateAt) {
+  public Episode(Long id, String title, String synopsis, Integer order, String videoUrl, Integer secondsLong, Course course, Date createdAt, Date updateAt) {
     this.id = id;
     this.title = title;
     this.synopsis = synopsis;
     this.order = order;
     this.videoUrl = videoUrl;
     this.secondsLong = secondsLong;
-    this.courseId = courseId;
+    this.course = course;
     this.createdAt = createdAt;
     this.updateAt = updateAt;
   }
@@ -107,12 +107,12 @@ public class Episode {
     this.secondsLong = secondsLong;
   }
 
-  public Integer getCourseId() {
-    return courseId;
+  public Course getCourse() {
+    return course;
   }
 
-  public void setCourseId(Integer courseId) {
-    this.courseId = courseId;
+  public void setCourse(Course course) {
+    this.course = course;
   }
 
   public Date getCreatedAt() {
